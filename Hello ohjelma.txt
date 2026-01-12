@@ -2,4 +2,5 @@ Nopea ohjelma joka kysyy nimeä ja tervehtii.
 
 Kirjoitettu visual studio code:lla
 
-En onnistunut luomaan tiedostoa binäärimuodossa.
+
+En onnistunut luomaan tiedostoa binääri muodossa.
