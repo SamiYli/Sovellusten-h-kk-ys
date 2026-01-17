@@ -7,7 +7,7 @@ Osa kotiverkon laitteista kuuluu soveltamisalaan, koska niitä käytetään koul
 Verkkoyhteys muodostuu puhelimesta, jolla jaetaan hotspot Wi-Fi yhteys muille laitteille. Laitteita verkossa: HP EliteBook 840 G2 (Ubuntu desktop virtuaalikone pyörii tällä koneella), HP Pavilion (Out of scope, koska sitä ei käytetä koulutehtäviin), PlayStation 4(Out of scope, koska sitä ei käytetä koulutehtäviin). 
 Rajapintoja ovat Telia verkontarjoaja, OneDrive pilvitallenustila, GitHub tallenustila ja staattisen websivun isännöinti, Moodle kurssin verkkoalusta, Laksu tehtävien palautus verkkoalusta, Citrix koulun etätyöpöytä, Visual studio code koodieditori.
 
-
+![Verkkokaavio](Soveltamisala doodle.JPG)
 
 Todisteet: 
 Wi-Fi = Kuvankaappaus verkkoyhteyden ominaisuuksista. Laitteiden tiedot listattuna. Kuvakaappaus virtuaalikoneesta. Linkki GitHub repoon, kuvakaappaus OneDrive asetuksista.
