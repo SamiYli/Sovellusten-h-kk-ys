@@ -8,7 +8,7 @@ nimi=str(input("Kerro nimesi"))
 print("Hello",nimi)
 ```
 
-Ohjelman binäärinä binary viewer lisäosassa.
+Ohjelma binäärinä binary viewer lisäosassa.
 ![Ohjelma binääriä](Python_binääri.JPG)
 
 ## h1 Kotiverkon ISMS soveltamisala
