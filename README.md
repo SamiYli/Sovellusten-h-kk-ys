@@ -5,7 +5,8 @@ Nopea ohjelma joka kysyy nimeä ja tervehtii, käännettynä binääriksi.
 LÄHDEKOODI:
 ```python
 def hello():
-    print("Hello world")```
+    print("Hello world")
+
 
 Ohjelman binäärinä binary viewer lisäosassa.
 ![Ohjelma binääriä](Python_binääri.JPG)
