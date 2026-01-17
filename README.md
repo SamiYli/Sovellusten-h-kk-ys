@@ -2,8 +2,12 @@
 ## h0
 Nopea ohjelma joka kysyy nimeä ja tervehtii, käännettynä binääriksi.
 
-[Katso lähdekoodi](src/Hello_ohjelma.py)
+LÄHDEKOODI:
+```python
+def hello():
+    print("Hello world")
 
+Ohjelman binäärinä binary viewer lisäosassa.
 ![Ohjelma binääriä](Python_binääri.JPG)
 
 ## h1 Kotiverkon ISMS soveltamisala
