@@ -2,8 +2,7 @@
 ## h0
 Nopea ohjelma joka kysyy nimeä ja tervehtii, käännettynä binääriksi.
 
-LÄHDEKOODI:
-```python
+LÄHDEKOODI: ```python
 nimi=str(input("Kerro nimesi"))
 print("Hello",nimi)
 ```
