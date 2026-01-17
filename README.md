@@ -2,6 +2,9 @@
 ## h0
 Nopea ohjelma joka kysyy nimeä ja tervehtii, käännettynä binääriksi.
 
+```md
+[Katso lähdekoodi](src/Hello ohjelma.py)
+
 ## h1 Kotiverkon ISMS soveltamisala
 Osa kotiverkon laitteista kuuluu soveltamisalaan, koska niitä käytetään koulutehtävien tekoon. Muut laitteet ovat kohdeympäristön ulkopuolella, koska ne eivät ole oleellisia tehtävien kannalta. Osa tarpeellisista resursseista ovat täysin hallintani ulkopuolella ja rajaan ne siksi ulos. Muutamat resurssit ovat osittain vaikutukseni alaisia tai olen niiden käytöstä vastuussa ja siksi ne osittain kuuluvat soveltamisalaan.
 Verkkoyhteys muodostuu puhelimesta, jolla jaetaan hotspot Wi-Fi yhteys muille laitteille. Laitteita verkossa: HP EliteBook 840 G2 (Ubuntu desktop virtuaalikone pyörii tällä koneella), HP Pavilion (Out of scope, koska sitä ei käytetä koulutehtäviin), PlayStation 4(Out of scope, koska sitä ei käytetä koulutehtäviin). 
