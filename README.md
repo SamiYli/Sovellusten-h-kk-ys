@@ -39,3 +39,5 @@ Wi-Fi = Kuvankaappaus verkkoyhteyden ominaisuuksista. Laitteiden tiedot listattu
     </tr>
 </table>
 
+Tehtävässä käytetty SFS-EN ISO/IEC 27001:2023 Tietoturvallisuus, kyberturvallisuus ja tietosuoja. Tietoturvallisuuden hallintajärjestelmät. Vaatimukset. Suomen Standardisoimisliitto SFS ry
+
