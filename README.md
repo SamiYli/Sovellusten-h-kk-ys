@@ -18,6 +18,65 @@ Rajapintoja ovat Telia verkontarjoaja, OneDrive pilvitallenustila, GitHub tallen
 
 ![Verkkokaavio](Soveltamisala doodle.JPG)
 
+<table>
+    <tr>
+        <td>Kotiverkko</td>
+        <td>Soveltamisala</td>
+    </tr>
+    <tr>
+        <td>Wi-Fi, Mobiili hotspot, Iphone 12</td>
+        <td>In scope</td>
+    </tr>
+    <tr>
+        <td>Läppäri HP EliteBook 840 G2</td>
+        <td>In scope</td>
+    </tr>
+    <tr>
+        <td>Linux VM</td>
+        <td>In scope</td>
+    </tr>
+    <tr>
+        <td>Playstation 4</td>
+        <td>Out of scope. Ei käytetä kurssilla.</td>
+    </tr>
+    <tr>
+        <td>Läppäri HP Pavilion</td>
+        <td>Out of scope. Ei käytetä kurssilla.</td>
+    </tr>
+    <tr>
+        <td>Rajapinnat</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Visual studio code</td>
+        <td>In Scope</td>
+    </tr>
+    <tr>
+        <td>Telia, Operaattorin verkko internetin puolella.</td>
+        <td>Out of scope</td>
+    </tr>
+    <tr>
+        <td>OneDrive. Pilvitallenustila</td>
+        <td>Käyttö in scope. Alusta out of scope.</td>
+    </tr>
+    <tr>
+        <td>GitHub. Repository ja page tehtävien palautukseen.</td>
+        <td>Käyttö in scope. Alusta out of scope.</td>
+    </tr>
+    <tr>
+        <td>Moodle. Kurssisivu</td>
+        <td>Out of scope</td>
+    </tr>
+    <tr>
+        <td>Laksu. Tehtävien palautuksen verkkopalvelu.</td>
+        <td>Out of scope</td>
+    </tr>
+    <tr>
+        <td>Citrix. Koulun etätyöpöytä</td>
+        <td>Käyttö in scope. Alusta out of scope.</td>
+    </tr>
+</table>
+
 Todisteet: 
 Wi-Fi = Kuvankaappaus verkkoyhteyden ominaisuuksista. Laitteiden tiedot listattuna. Kuvakaappaus virtuaalikoneesta. Linkki GitHub repoon, kuvakaappaus OneDrive asetuksista.
 
