@@ -109,3 +109,65 @@ Wi-Fi = Kuvankaappaus verkkoyhteyden ominaisuuksista. Laitteiden tiedot listattu
 
 Tehtävässä käytetty SFS-EN ISO/IEC 27001:2023 Tietoturvallisuus, kyberturvallisuus ja tietosuoja. Tietoturvallisuuden hallintajärjestelmät. Vaatimukset. Suomen Standardisoimisliitto SFS ry
 
+
+## h2 Break & Unbreak
+
+Tämä tehtävä tehtiin virtuaalikoneella: KotiLab1
+OS = Ubuntu desktop amd(64-bit) version 24.04.3
+vCore = 2 vCPU
+vRAM = 3999 MB
+vMemory = 25 GB
+Network = NAT 
+
+010 staff-only
+HACKING it.
+Web sivulla on yksi laatikko syötteelle, jonne asettaa pin. Kokeilin useammalla eri muodolla [' or 1=1 --],  [' +OR+1=1 ; -- ], [' OR 1=1 ;--]. Mikään ei mennyt palvelimelle asti, joten katsoin tehtävän neuvoja. Inspect työkalulla tarkastellen, syötteenä otetaan vain numeroita type="number". Samalla työkalulla voi poistaa syöte tyypin, ennen kuin lähettää lomakkeen palvelimelle. Nyt voin kirjoittaa mitä vain kenttään ja se menee palvelimelle. Sama injektio [' OR 1=1 --] uudestaan ja sain vastaukseski "foo". Yritin seuraavaksi saada tulosteena kaikki tietueet [' UNION SELECT * FROM pins OR 1=1 --] antoi error 500. Luovuin siitä ideasta ja kokeilin saada pelkän salasana tietueen [' UNION SELECT password FROM pins OR 1=1 --] sama error 500. Siitä toinen kokeilu [' UNION SELECT password FROM pins --] onnistui.
+![Onnistunut hakkerointi](onnistunut_010.JPG)
+
+FIXIN it.
+Haavoittuvuus koodissa oli SQL kyselyn ketjuttamista("concatenation of SQL queries"), eli käyttäjän syöte lisätään osaksi SQL lausetta. [SELECT FROM table WHERE row = "user input";] tyyppiset lauseet ovat haavoittuvia. Valmistellut lauseet joilla on parametriudut kyselyt on hyvä tapa estää SQL injektiot. OWASP Cheat Sheet Series, SQL Injection Prevention Cheat Sheet
+https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+Korjattu koodi vaihtaa käyttäjä syötteen muuttujan pin arvoksi:
+```sql = text("SELECT password FROM pins WHERE pin = :pin")
+
+    row = ""
+
+    with app.app_context():
+        res = db.session.execute(sql, {"pin": pin})
+        db.session.commit()
+        row = res.fetchone()
+```
+![Korjattu lähdekoodi](Fixattu_lähdekoodi_staff-only-1.JPG)
+Tällaisia haavoittuvuuksia voi ilmetä kohteissa joissa ei ymmärretä SQL injektio tekniikoita.
+
+
+
+020 - Your Eyes Only
+HACKING it.
+Web-sivulla suoritin ensimmäisenä piilotettujen hakemistojen fuzzauksen, ffuf työkalulla käyttäen common.txt sanakirjaa yleisistä verkkopoluista. [./ffuf -w common.txt -u http://127.0.0.1:8000/FUZZ] oli hidas suorittaa, mutta yksi pyyntö onnistui ("admin-console"). On siis olemassa yksi piilotettu hakemisto. Sen syöttäminen url kenttään ei toiminut. Sivulla oli mahdollista kirjautua ja rekisteröityä käyttäjäksi, joten päätin kokeilla rekisteröityä ja sitten kirjautua sisään. Kokeilin uudelleen sisään kirjautuneena syöttää url kenttään /admin-console ja tämä toimi.
+![Onnistunut hakkerointi](onnistunut_020.JPG)
+
+FIXIN it.
+Ongelman löytäminen lähdekoodista oli haastavaa, joten katsoin opettajan neuvot läpi ja siellä sanottiin pääsynhallinta asioiden olevan views.py tiedostossa. Siellä oli ```class AdminShowAllView``` joka tarkisti vain käyttäjän olevan sisään kirjautunut. Ratkaisuna kopioin ylempää class AdminDashboardView, test_func funktion ```class AdminShowAllView``` test_func sisään. Tämä ratkaisi tilanteen.
+![Korjattu lähdekoodi](Fixattu_lähdekoodi_your-eyes-only.JPG)
+Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalointi voi päästää hyökkääjän poistamaan tai muuttamaan tietoja järjestelmässä.
+
+
+
+Tero Karvinen Hack'n Fix tehtävä ja neuvot
+https://terokarvinen.com/hack-n-fix/
+
+OWASP Top 10:2021 A01 – Broken Access Control https://owasp.org/Top10/A01_2021-Broken_Access_Control/
+
+PortSwigger Web Security Academy Access control vulnerabilities and privilege escalation https://portswigger.net/web-security/access-control
+
+OWASP Cheat Sheet Series, SQL Injection Prevention Cheat Sheet
+https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+
+Tero Karvinen 2023 Find Hidden Web Directories - Fuzz URLs with ffuf https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/
+
+Joona Hoikkala (joohoi) ffuf
+https://github.com/ffuf/ffuf
+
+Dictionary of common web paths by Daniel Miessler
+https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt
