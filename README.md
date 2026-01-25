@@ -158,7 +158,7 @@ Ongelman löytäminen lähdekoodista oli haastavaa, joten katsoin opettajan neuv
 
 ![Korjattu lähdekoodi](Fixattu_lähdekoodi_your-eyes-only.JPG)
 
-Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalointi voi päästää hyökkääjän poistamaan tai muuttamaan tietoja järjestelmässä.[^3]
+Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalointi voi päästää hyökkääjän poistamaan tai muuttamaan tietoja järjestelmässä. (PortSwigger: privilige escalation)
 
 
 
@@ -166,7 +166,7 @@ Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalo
 
 <small>OWASP Top 10:2021 A01 – Broken Access Control https://owasp.org/Top10/A01_2021-Broken_Access_Control/<small>
 
-<small>[^3]:PortSwigger Web Security Academy Access control vulnerabilities and privilege escalation https://portswigger.net/web-security/access-control<small>
+<small>PortSwigger Web Security Academy Access control vulnerabilities and privilege escalation https://portswigger.net/web-security/access-control<small>
 
 <small>OWASP Cheat Sheet Series, SQL Injection Prevention Cheat Sheet https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html<small>
 
