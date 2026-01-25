@@ -122,6 +122,7 @@ Network = NAT
 010 staff-only
 HACKING it.
 Web sivulla on yksi laatikko syötteelle, jonne asettaa pin. Kokeilin useammalla eri muodolla [' or 1=1 --],  [' +OR+1=1 ; -- ], [' OR 1=1 ;--]. Mikään ei mennyt palvelimelle asti, joten katsoin tehtävän neuvoja. Inspect työkalulla tarkastellen, syötteenä otetaan vain numeroita type="number". Samalla työkalulla voi poistaa syöte tyypin, ennen kuin lähettää lomakkeen palvelimelle. Nyt voin kirjoittaa mitä vain kenttään ja se menee palvelimelle. Sama injektio [' OR 1=1 --] uudestaan ja sain vastaukseski "foo". Yritin seuraavaksi saada tulosteena kaikki tietueet [' UNION SELECT * FROM pins OR 1=1 --] antoi error 500. Luovuin siitä ideasta ja kokeilin saada pelkän salasana tietueen [' UNION SELECT password FROM pins OR 1=1 --] sama error 500. Siitä toinen kokeilu [' UNION SELECT password FROM pins --] onnistui.
+
 ![Onnistunut hakkerointi](onnistunut_010.JPG)
 
 FIXIN it.
@@ -135,39 +136,41 @@ Korjattu koodi vaihtaa käyttäjä syötteen muuttujan pin arvoksi:
     with app.app_context():
         res = db.session.execute(sql, {"pin": pin})
         db.session.commit()
-        row = res.fetchone()
-```
+        row = res.fetchone()```
+
 ![Korjattu lähdekoodi](Fixattu_lähdekoodi_staff-only-1.JPG)
+
 Tällaisia haavoittuvuuksia voi ilmetä kohteissa joissa ei ymmärretä SQL injektio tekniikoita.
 
 
 
 020 - Your Eyes Only
+
 HACKING it.
-Web-sivulla suoritin ensimmäisenä piilotettujen hakemistojen fuzzauksen, ffuf työkalulla käyttäen common.txt sanakirjaa yleisistä verkkopoluista. [./ffuf -w common.txt -u http://127.0.0.1:8000/FUZZ] oli hidas suorittaa, mutta yksi pyyntö onnistui ("admin-console"). On siis olemassa yksi piilotettu hakemisto. Sen syöttäminen url kenttään ei toiminut. Sivulla oli mahdollista kirjautua ja rekisteröityä käyttäjäksi, joten päätin kokeilla rekisteröityä ja sitten kirjautua sisään. Kokeilin uudelleen sisään kirjautuneena syöttää url kenttään /admin-console ja tämä toimi.
+Web-sivulla suoritin ensimmäisenä piilotettujen hakemistojen fuzzauksen ffuf työkalulla, käyttäen common.txt sanakirjaa yleisistä verkkopoluista. [./ffuf -w common.txt -u http://127.0.0.1:8000/FUZZ] oli hidas suorittaa, mutta yksi pyyntö onnistui ("admin-console"). On siis olemassa yksi piilotettu hakemisto. Sen syöttäminen url kenttään ei toiminut. Sivulla oli mahdollista kirjautua ja rekisteröityä käyttäjäksi, joten päätin kokeilla rekisteröityä ja sitten kirjautua sisään. Kokeilin uudelleen sisään kirjautuneena syöttää url kenttään /admin-console ja tämä toimi.
+
 ![Onnistunut hakkerointi](onnistunut_020.JPG)
 
 FIXIN it.
+
 Ongelman löytäminen lähdekoodista oli haastavaa, joten katsoin opettajan neuvot läpi ja siellä sanottiin pääsynhallinta asioiden olevan views.py tiedostossa. Siellä oli ```class AdminShowAllView``` joka tarkisti vain käyttäjän olevan sisään kirjautunut. Ratkaisuna kopioin ylempää class AdminDashboardView, test_func funktion ```class AdminShowAllView``` test_func sisään. Tämä ratkaisi tilanteen.
+
 ![Korjattu lähdekoodi](Fixattu_lähdekoodi_your-eyes-only.JPG)
-Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalointi voi päästää hyökkääjän poistamaan tai muuttamaan tietoja järjestelmässä.
+
+Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalointi voi päästää hyökkääjän poistamaan tai muuttamaan tietoja järjestelmässä.[^3]
 
 
 
-Tero Karvinen Hack'n Fix tehtävä ja neuvot
-https://terokarvinen.com/hack-n-fix/
+<small>Tero Karvinen Hack'n Fix tehtävät ja neuvot https://terokarvinen.com/hack-n-fix/<small>
 
-OWASP Top 10:2021 A01 – Broken Access Control https://owasp.org/Top10/A01_2021-Broken_Access_Control/
+<small>OWASP Top 10:2021 A01 – Broken Access Control https://owasp.org/Top10/A01_2021-Broken_Access_Control/<small>
 
-PortSwigger Web Security Academy Access control vulnerabilities and privilege escalation https://portswigger.net/web-security/access-control
+<small>[^3]:PortSwigger Web Security Academy Access control vulnerabilities and privilege escalation https://portswigger.net/web-security/access-control<small>
 
-OWASP Cheat Sheet Series, SQL Injection Prevention Cheat Sheet
-https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+<small>OWASP Cheat Sheet Series, SQL Injection Prevention Cheat Sheet https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html<small>
 
-Tero Karvinen 2023 Find Hidden Web Directories - Fuzz URLs with ffuf https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/
+<small>Tero Karvinen 2023 Find Hidden Web Directories - Fuzz URLs with ffuf https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/<small>
 
-Joona Hoikkala (joohoi) ffuf
-https://github.com/ffuf/ffuf
+<small>Joona Hoikkala (joohoi) ffuf https://github.com/ffuf/ffuf<small>
 
-Dictionary of common web paths by Daniel Miessler
-https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt
+<small>Dictionary of common web paths by Daniel Miessler https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt<small>
