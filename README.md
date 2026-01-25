@@ -136,7 +136,8 @@ Korjattu koodi vaihtaa käyttäjä syötteen muuttujan pin arvoksi:
     with app.app_context():
         res = db.session.execute(sql, {"pin": pin})
         db.session.commit()
-        row = res.fetchone()```
+        row = res.fetchone()
+```
 
 ![Korjattu lähdekoodi](Fixattu_lähdekoodi_staff-only-1.JPG)
 
