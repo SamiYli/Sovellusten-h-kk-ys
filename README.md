@@ -161,6 +161,16 @@ Ongelman löytäminen lähdekoodista oli haastavaa, joten katsoin opettajan neuv
 Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalointi voi päästää hyökkääjän poistamaan tai muuttamaan tietoja järjestelmässä. (PortSwigger: privilige escalation)
 
 
+NOTES:
+-Istunnonhallinta = Yhdistetään http pyynnöt käyttäjään.
+-Pääsynhallinta = Estetään käyttäjää tekemästä epätoivottuja asioita.
+-Vertikaalinen pääsynhallinta = Estetään saamasta ylemmät käyttöoikeuduet.
+-Horisontaalinen pääsynhallinta = Estetään pääsemästä toisien käyttäjien resursseihin.
+-SQL injektio = SQL kyselyiden manipulointia.
+-Fuzzing = epämuodostuneen syötteen syöttäminen haavoittuvuuksien paljastamiseksi.
+
+
+
 
 <small>Tero Karvinen Hack'n Fix tehtävät ja neuvot https://terokarvinen.com/hack-n-fix/<small>
 
