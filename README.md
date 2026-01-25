@@ -162,16 +162,16 @@ Tällaista voi sattua huolimattomuudesta. Pääsyoikeuksien vertikaalinen eskalo
 
 
 NOTES:
--Istunnonhallinta = Yhdistetään http pyynnöt käyttäjään.
--Pääsynhallinta = Estetään käyttäjää tekemästä epätoivottuja asioita.
--Vertikaalinen pääsynhallinta = Estetään saamasta ylemmät käyttöoikeuduet.
--Horisontaalinen pääsynhallinta = Estetään pääsemästä toisien käyttäjien resursseihin.
--SQL injektio = SQL kyselyiden manipulointia.
--Fuzzing = epämuodostuneen syötteen syöttäminen haavoittuvuuksien paljastamiseksi.
++Istunnonhallinta, Yhdistetään http pyynnöt käyttäjään.
++Pääsynhallinta, Estetään käyttäjää tekemästä epätoivottuja asioita.
++Vertikaalinen pääsynhallinta, Estetään saamasta ylemmät käyttöoikeuduet.
++Horisontaalinen pääsynhallinta, Estetään pääsemästä toisien käyttäjien resursseihin.
++SQL injektio, SQL kyselyiden manipulointia.
++Fuzzing, epämuodostuneen syötteen syöttäminen haavoittuvuuksien paljastamiseksi.
 
 
 
-
+Lähteet:
 <small>Tero Karvinen Hack'n Fix tehtävät ja neuvot https://terokarvinen.com/hack-n-fix/<small>
 
 <small>OWASP Top 10:2021 A01 – Broken Access Control https://owasp.org/Top10/A01_2021-Broken_Access_Control/<small>
